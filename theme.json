@@ -1,0 +1,94 @@
+{
+    "defaults": {
+        "colours": {
+            "dark_bg": "#20202A",
+            "normal_bg": "#30303A",
+            "dark_text": "#CCCCCC",
+            "normal_text": "#FFFFFF",
+            "normal_border": "#50505A",
+            "hovered_bg": "#40404A",
+            "selected_bg": "#5060A0",
+            "selected_text": "#FFFFFF",
+            "disabled_text": "#808080",
+            "link_text": "#80A0FF",
+            "link_hover": "#A0C0FF"
+        }
+    },
+    "UIPanel": {
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "5"
+        }
+    },
+    "#top_toolbar": {
+        "colours": {
+            "normal_bg": "#1A1A22"
+        }
+    },
+    "#sidebar": {
+        "colours": {
+            "normal_bg": "#252530"
+        }
+    },
+    "#sidebar_title": {
+        "colours": {
+            "normal_text": "#E0E0FF"
+        },
+        "misc": {
+            "font": {
+                "name": "fira_code",
+                "size": "18",
+                "style": ["bold"]
+            }
+        }
+    },
+    "UIButton": {
+        "colours": {
+            "normal_bg": "#4A4A5A",
+            "hovered_bg": "#5A5A6A",
+            "disabled_bg": "#3A3A4A",
+            "selected_bg": "#5060A0",
+            "active_bg": "#5060A0",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF",
+            "selected_text": "#FFFFFF",
+            "disabled_text": "#999999",
+            "normal_border": "#6A6A7A",
+            "hovered_border": "#8A8A9A"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "5",
+            "border_width": "1",
+            "shadow_width": "2",
+            "tool_tip_delay": "1.0"
+        }
+    },
+    "#save_button": {
+        "colours": {
+            "normal_bg": "#50A060",
+            "hovered_bg": "#60B070"
+        }
+    },
+    "#delete_button": {
+        "colours": {
+            "normal_bg": "#A05050",
+            "hovered_bg": "#B06060"
+        }
+    },
+    "UITextEntryLine": {
+        "colours": {
+            "dark_bg": "#2A2A35",
+            "normal_text": "#E0E0E0",
+            "selected_bg": "#5060A0",
+            "selected_text": "#FFFFFF"
+        }
+    },
+    "UIDropDownMenu": {
+        "colours": {
+            "normal_bg": "#4A4A5A",
+            "hovered_bg": "#5A5A6A",
+            "selected_bg": "#5060A0"
+        }
+    }
+} 

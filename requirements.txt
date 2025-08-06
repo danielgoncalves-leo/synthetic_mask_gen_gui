@@ -1,0 +1,6 @@
+pygame
+pygame-ce
+pygame_gui>=0.6.10
+Pillow
+numpy
+rich

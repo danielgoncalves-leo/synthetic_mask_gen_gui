@@ -1,0 +1,111 @@
+
+display:
+  window_width: 1280
+  window_height: 720
+  info_bar_height: 30
+  fps: 60
+  default_background_color: [30, 30, 30]  # RGB values
+
+canvas:
+  padding: 10  # Minimum distance from canvas edges
+  main_area_ratio: 0.5  # Main area takes up this fraction of window width
+
+fonts:
+  min_size: 20
+  max_size: 80
+  show_info: true  # Print font information when generating layout
+  rotate_letters_on_arc: true
+  max_arc_letter_rotation: 45  # Maximum rotation in degrees for arc letters
+
+# Text Layout Settings
+text:
+  types: ["normal", "arc"]
+  type_weights: [0.7, 0.3]  # Probability weights for each text type
+  # Note: Words are now loaded from the 'words/' directory
+  # Fallback words used only if no word files are found
+  fallback_words:
+    - "SAMPLE"
+    - "TEXT" 
+    - "OVERLAY"
+    - "DESIGN"
+    - "CREATIVE"
+    - "LAYOUT"
+    - "VISUAL"
+    - "CONTENT"
+    - "STYLE"
+    - "BRAND"
+    - "MODERN"
+    - "DIGITAL"
+    - "ART"
+    - "GRAPHICS"
+    - "ELEMENT"
+  
+  # Normal text settings
+  normal:
+    padding: 2  # Padding between letters
+  
+  # Arc text settings
+  arc:
+    min_radius: 80
+    max_radius: 200
+
+# Mask Settings
+mask:
+  grow_pixels: 3  # Grow the final white mask area by this many pixels
+  padding_size: 5  # Size of padding mask for collision detection
+
+# Layout Generation Settings
+layout:
+  max_words: 6
+  max_attempts_per_word: 1000
+  max_attempts_total: 3000
+
+# Placement Regions (Rule-based zones)
+# Each region defines a polygon where text can be placed
+# Coordinates are relative (0.0 to 1.0) within the image
+placement_regions:
+  - name: "center_area"
+    shape: [[0.2, 0.2], [0.8, 0.2], [0.8, 0.8], [0.2, 0.8]]
+    rules:
+      placement_mode: "stretch"  # or "fit"
+      font_size_range: [30, 60]
+      text_types: ["normal", "arc"]
+      text_type_weights: [0.8, 0.2]
+  
+  - name: "top_banner"
+    shape: [[0.1, 0.05], [0.9, 0.05], [0.9, 0.25], [0.1, 0.25]]
+    rules:
+      placement_mode: "stretch"
+      font_size_range: [40, 80]
+      text_types: ["normal"]
+      text_type_weights: [1.0]
+
+# Zoom and Pan Settings
+zoom:
+  min_level: 0.1
+  max_level: 5.0
+  speed: 0.1
+
+# Performance Settings
+performance:
+  batch_processing_max_workers: 4  # Maximum parallel workers for batch processing
+
+# File Paths (relative to script directory)
+paths:
+  default_image_dir: "input"
+  default_font_dir: "fonts"
+  output_dir: "out"
+  
+# Debug Settings
+debug:
+  show_mask_overlay: false
+  show_debug_regions: false
+  force_regions_only: false
+
+logging:
+  level: "INFO" # Can be "INFO" or "ERROR"
+
+# Supported file extensions
+supported_extensions:
+  images: [".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif", ".webp"]
+  fonts: [".ttf", ".otf"] 

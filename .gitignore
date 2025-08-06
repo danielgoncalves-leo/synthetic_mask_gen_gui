@@ -1,0 +1,10 @@
+input/*
+fonts/*
+assets/*
+tmp/*
+.DS_Store
+.venv
+.cursor
+out/*
+**__pycache__**
+.vscode
