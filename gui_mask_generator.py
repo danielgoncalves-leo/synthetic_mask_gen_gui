@@ -711,7 +711,7 @@ def batch_save():
         return
     
     # Use modern UI dialog
-    result = show_modern_batch_save_popup(ui_manager, (W, H), current_image_directory)
+    result = show_modern_batch_save_popup(ui_manager, (W, H), len(current_image_directory))
     if result is None:
         logger.info("Batch save cancelled by user.")
         return

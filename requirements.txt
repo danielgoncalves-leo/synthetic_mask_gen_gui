@@ -1,6 +1,6 @@
 pygame
-pygame-ce
-pygame_gui>=0.6.10
+pygame_gui
 Pillow
 numpy
 rich
+PyYAML

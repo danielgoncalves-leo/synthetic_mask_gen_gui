@@ -315,6 +315,11 @@ class BatchSaveDialog:
                     megapixels = None
                     if self.resize_enabled:
                         mp_text = self.megapixel_dropdown.selected_option
+                        # Handle case where selected_option might be a tuple
+                        if isinstance(mp_text, tuple):
+                            mp_text = mp_text[0] if mp_text else 'Original'
+                        elif mp_text is None:
+                            mp_text = 'Original'
                         if mp_text != 'Original':
                             megapixels = int(mp_text.split()[0])
                     
