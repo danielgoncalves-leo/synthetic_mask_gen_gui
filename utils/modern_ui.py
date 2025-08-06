@@ -1,5 +1,6 @@
 import pygame
 import pygame_gui
+from pygame_gui.elements import UICheckBox
 import sys
 import os
 import json
@@ -40,22 +41,6 @@ def create_font_sample_surface(width: int,
     surface.blit(text_surf, rect)
 
     return surface.convert()   # opaque RGB surface (no unexpected alpha)
-
-class UIFontSample(pygame_gui.elements.UILabel):
-    """Font sample using UILabel with custom surface."""
-    
-    def __init__(self, relative_rect: pygame.Rect, font_path: str, sample_text: str, 
-                 manager: pygame_gui.UIManager, container=None):
-        # Create as a UILabel first
-        super().__init__(relative_rect, "", manager, container)
-        
-        # Create and apply custom surface
-        font_surface = create_font_sample_surface(
-            relative_rect.width, relative_rect.height, font_path, sample_text
-        )
-        
-        # Override the label's image with our custom surface
-        self.image = font_surface
 
 class ModernUIManager:
     """Modern UI manager using pygame_gui for professional-looking interfaces."""
@@ -788,15 +773,14 @@ class MultiTemplateSelectionDialog:
         
         # Randomize checkbox
         checkbox_y = dialog_height - 90
-        from pygame_gui.elements import UICheckBox
         self.randomize_checkbox = UICheckBox(
-            relative_rect=pygame.Rect(20, checkbox_y, 50, 30),
-            text='Randomize',
+            relative_rect=pygame.Rect(20, checkbox_y, 30, 30),
+            text='Randomize selected',
             manager=ui_manager,
             container=self.window,
+            initial_state=False,
             object_id='#randomize_checkbox'
         )
-        self.randomize_enabled = False
 
         # Buttons
         button_y = dialog_height - 80
@@ -825,10 +809,10 @@ class MultiTemplateSelectionDialog:
                 elif event.ui_element == self.cancel_button:
                     self.result = None
                     self.close()
-                elif event.ui_element == self.randomize_checkbox:
-                    # Toggle internal state immediately for feedback (optional)
-                    self.randomize_enabled = self.randomize_checkbox.is_checked
-            # Remove explicit checkbox event handling which caused errors
+            elif event.user_type == pygame_gui.UI_WINDOW_CLOSE:
+                if event.ui_element == self.window:
+                    self.result = None
+                    self.close()
     
     def close(self):
         """Close the dialog."""
@@ -884,6 +868,7 @@ def show_modern_controls(ui_manager: ModernUIManager, screen_size: Tuple[int, in
     window = ControlsHelpWindow(ui_manager.manager, screen_size)
     
     # Window will be handled by the main UI manager
+    ui_manager.active_windows.append(window)
     return window
 
 def show_modern_template_selection(ui_manager: ModernUIManager, screen_size: Tuple[int, int],

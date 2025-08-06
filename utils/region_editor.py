@@ -945,6 +945,9 @@ class ConfirmationDialog(UIConfirmationDialog):
     def process_event(self, event):
         super().process_event(event)
         if event.type == pygame_gui.UI_CONFIRMATION_DIALOG_CONFIRMED:
-            if self.completion_callback: self.completion_callback(True)
-        elif event.type == pygame.USEREVENT and event.user_type == pygame_gui.UI_BUTTON_PRESSED and event.ui_element == self.cancel_button:
-             if self.completion_callback: self.completion_callback(False) 
+            if self.completion_callback: 
+                self.completion_callback(True)
+        elif event.type == pygame_gui.UI_WINDOW_CLOSE and event.ui_element == self:
+            # Handle window close as cancel
+            if self.completion_callback: 
+                self.completion_callback(False) 
