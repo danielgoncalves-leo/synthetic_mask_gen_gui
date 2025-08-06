@@ -787,11 +787,11 @@ class MultiTemplateSelectionDialog:
         )
         
         # Randomize checkbox
-        checkbox_y = dialog_height - 120
+        checkbox_y = dialog_height - 90
         from pygame_gui.elements import UICheckBox
         self.randomize_checkbox = UICheckBox(
-            relative_rect=pygame.Rect(20, checkbox_y, 180, 30),
-            text='Randomize each layout',
+            relative_rect=pygame.Rect(20, checkbox_y, 50, 30),
+            text='Randomize',
             manager=ui_manager,
             container=self.window,
             object_id='#randomize_checkbox'
